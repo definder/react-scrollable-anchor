@@ -23,8 +23,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var defaultConfig = {
   offset: 0,
   scrollDuration: 400,
+<<<<<<< HEAD
+  keepLastAnchorHash: false
+=======
   keepLastAnchorHash: false,
   scrollUrlHashUpdate: true
+>>>>>>> 9c8d800485eefd59a28480a0d9ed59d6daf7c125
 };
 
 var Manager = function Manager() {
@@ -42,9 +46,7 @@ var Manager = function Manager() {
     window.removeEventListener('hashchange', _this.handleHashChange);
   };
 
-  this.configure = function () {
-    var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+  this.configure = function (config) {
     _this.config = _extends({}, defaultConfig, config);
   };
 
@@ -74,6 +76,21 @@ var Manager = function Manager() {
   this.handleScroll = function () {
     var _config = _this.config,
         offset = _config.offset,
+<<<<<<< HEAD
+        keepLastAnchorHash = _config.keepLastAnchorHash;
+
+    var bestAnchorId = (0, _scroll.getBestAnchorGivenScrollLocation)(_this.anchors, offset);
+
+    if (bestAnchorId && (0, _hash.getHash)() !== bestAnchorId) {
+      _this.forcedHash = true;
+      (0, _hash.updateHash)(bestAnchorId, false);
+    } else if (!bestAnchorId && !keepLastAnchorHash) {
+      (0, _hash.removeHash)();
+    }
+  };
+
+  this.handleHashChange = function () {
+=======
         keepLastAnchorHash = _config.keepLastAnchorHash,
         scrollUrlHashUpdate = _config.scrollUrlHashUpdate;
 
@@ -90,7 +107,8 @@ var Manager = function Manager() {
     }
   };
 
-  this.handleHashChange = function () {
+  this.handleHashChange = function (e) {
+>>>>>>> 9c8d800485eefd59a28480a0d9ed59d6daf7c125
     if (_this.forcedHash) {
       _this.forcedHash = false;
     } else {
