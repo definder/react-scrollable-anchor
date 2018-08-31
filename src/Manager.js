@@ -29,7 +29,7 @@ class Manager {
     window.removeEventListener('hashchange', this.handleHashChange)
   }
 
-  configure = (config) => {
+  configure = (config = {}) => {
     this.config = {
       ...defaultConfig,
       ...config,
