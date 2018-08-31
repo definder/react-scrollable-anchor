@@ -1,0 +1,32 @@
+.gradient_color{
+  border-bottom: 1px solid;
+}
+
+.gradient_color__menu{
+
+}
+
+.gradient_color__block{
+  width: 100%;
+  height: 400px;
+}
+
+.gradient_color__block.type_0{
+  background-image: linear-gradient(#d11001, #b80e01);
+}
+
+.gradient_color__block.type_1{
+  background-image: linear-gradient(#ff8422, #fa6560);
+}
+
+.gradient_color__block.type_2{
+  background-image: linear-gradient(#ffaf00, #518039);
+}
+
+.gradient_color__block.type_3{
+  background-image: linear-gradient(#38630e, #add285);
+}
+
+.gradient_color__block.type_4{
+  background-image: linear-gradient(#009ab0, #82efee);
+}
