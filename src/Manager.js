@@ -71,7 +71,7 @@ class Manager {
     }
   }
 
-  handleHashChange = (e) => {
+  handleHashChange = () => {
     if (this.forcedHash) {
       this.forcedHash = false
     } else {
