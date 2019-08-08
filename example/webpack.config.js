@@ -23,14 +23,27 @@ module.exports = (env = {}) => {
     },
     context: paths.src,
     module: {
-      loaders: [
-        {test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules(?!\/react-disqus-thread)/},
-        {test: /\.css$/, loaders: ['style-loader', 'css-loader', 'postcss-loader']},
+      rules: [
+        {
+          test: /\.js$/,
+          use: [{
+            loader: 'babel-loader',
+          }],
+          exclude: /node_modules/,
+        },
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            { loader: 'css-loader', options: { importLoaders: 1 } },
+          ],
+        },
       ],
     },
     resolve: {
       alias: {
         react: resolve(__dirname, 'node_modules', 'react'),
+        ['react-dom']: resolve(__dirname, 'node_modules', 'react-dom'),
       },
     },
   }
@@ -45,7 +58,6 @@ module.exports = (env = {}) => {
     devServer: {
       hot: true,
       contentBase: paths.dist,
-      outputPath: paths.dist,
       publicPath: '/',
       historyApiFallback: true,
       port: 3210,
@@ -74,13 +86,7 @@ module.exports = (env = {}) => {
           'NODE_ENV': JSON.stringify('production'),
         },
       }),
-      new webpack.optimize.DedupePlugin(),
       // new webpack.optimize.OccurenceOrderPlugin(),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-        },
-      }),
     ],
   }
 

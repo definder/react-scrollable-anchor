@@ -1,5 +1,19 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import * as PropTypes from 'prop-types'
+import styled from 'styled-components'
 import { goToTop } from '../../../src'
+
+const SContent = styled.div`
+  font-size: 2em;
+`
+
+const Content = React.forwardRef(function Content({children, style}, ref) {
+  return (
+      <SContent style={style} ref={ref}>
+        {children}
+      </SContent>
+  )
+})
 
 const styles = {
   container: {
@@ -45,13 +59,13 @@ export default class Section extends Component {
     const containerStyle = {...style, ...styles.container, backgroundColor}
 
     return (
-      <div style={containerStyle}>
+      <Content style={containerStyle}>
         <div style={styles.label}>
           <span> {label} </span>
         </div>
         { sections.map(this.renderSectionLink) }
         <div style={styles.link} onClick={goToTop}> Top </div>
-      </div>
+      </Content>
     )
   }
 }
