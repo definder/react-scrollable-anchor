@@ -1,7 +1,8 @@
-import jump from 'jump.js'
 import { debounce } from './utils/func'
 import { getBestAnchorGivenScrollLocation, getScrollTop } from './utils/scroll'
 import { getHash, updateHash, removeHash } from './utils/hash'
+
+const jump = require('jump.js').default
 
 const defaultConfig = {
   offset: 0,
